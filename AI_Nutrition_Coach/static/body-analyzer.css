@@ -1,0 +1,190 @@
+/* Premium Body Analyzer Styles */
+.body-analyzer-section {
+  background: linear-gradient(135deg, #667eea20, #764ba220);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  border-radius: 24px;
+  padding: 2rem;
+  backdrop-filter: blur(20px);
+}
+
+.body-analyzer-card {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.analyzer-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+#bodyPhoto {
+  grid-column: span 2;
+  padding: 8px;
+}
+
+#photoPreview img {
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+.body-result-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(30px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.2);
+  animation: fadeInUp 0.6s ease-out;
+  transform-origin: top;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.bmi-display {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.bmi-number {
+  font-size: 4rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.bmi-status {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.bmi-status.underweight {
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  color: white;
+}
+
+.bmi-status.normal {
+  background: linear-gradient(135deg, #51cf66, #6eeb83);
+  color: white;
+}
+
+.bmi-status.overweight {
+  background: linear-gradient(135deg, #ffd43b, #ffe066);
+  color: #333;
+}
+
+.fitness-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  background: rgba(255,255,255,0.6);
+  padding: 1.5rem;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.info-item h4 {
+  color: #667eea;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.info-item div {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.advice-section, .supplements-section {
+  background: rgba(102,126,234,0.1);
+  padding: 1.5rem;
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #667eea;
+}
+
+.advice-section h4, .supplements-section h4 {
+  color: #4a5568;
+  margin-bottom: 1rem;
+}
+
+#adviceList {
+  list-style: none;
+  padding: 0;
+}
+
+#adviceList li::before {
+  content: "💡 ";
+  margin-right: 0.5rem;
+}
+
+#supplements {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #667eea;
+  background: rgba(255,255,255,0.5);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: #667eea;
+}
+
+.loading span::after {
+  content: " .";
+  animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: " ."; }
+  40% { content: " . ."; }
+  60% { content: " . . ."; }
+  80%, 100% { content: " . . . ."; }
+}
+
+@media (max-width: 768px) {
+  .analyzer-inputs {
+    grid-template-columns: 1fr;
+  }
+  
+  .fitness-info {
+    grid-template-columns: 1fr;
+  }
+  
+  .bmi-number {
+    font-size: 3rem;
+  }
+}
+
+/* Glassmorphism Effect */
+.body-result-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}

@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+    <!-- Header -->
+    <div class="dashboard-header">
+        <h1>AI Nutrition Coach</h1>
+        <p>Personalized diet, tracking & AI advice</p>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- Left Column -->
+        <div class="left-column">
+            <!-- Profile Card -->
+            <div class="profile-card card">
+                <h3>👤 Profile</h3>
+                <input type="number" id="age" placeholder="Age">
+                <input type="number" id="height" placeholder="Height (cm)">
+                <input type="number" id="weight" placeholder="Weight (kg)">
+                <button onclick="saveProfile()" class="btn btn-blue">💾 Save Profile</button>
+                <div id="bmi-display" class="bmi-result"></div>
+            </div>
+
+            <!-- Food Log Section -->
+            <div class="food-log-card card">
+                <h3>🍽️ Food Log</h3>
+                <input type="file" id="food-image" accept="image/*">
+                <input type="text" id="food-input" placeholder="Food name">
+                <button onclick="addFood()" class="btn btn-green">➕ Add Food</button>
+                <div id="food-log-list">
+                    <div class="log-entry">
+                        <span class="time">14:30</span>
+                        <span>Chicken Rice - 450 kcal | P: 35g</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Coach -->
+            <div class="ai-coach-card card">
+                <h3>🤖 AI Coach</h3>
+                <button onclick="getAdvice()" class="btn btn-purple">💬 Get Personalized Advice</button>
+                <div id="ai-output" class="ai-output"></div>
+            </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            <!-- Daily Tracking -->
+            <div class="tracking-card card">
+                <h3>📊 Daily Tracking</h3>
+                <input type="number" id="water" placeholder="Water (ml)">
+                <input type="number" id="steps" placeholder="Steps">
+                <button onclick="updateTracking()" class="btn btn-purple">🔄 Update</button>
+                <div class="progress-item">
+                    <label>Water: <span id="water-progress">0/3000 ml</span></label>
+                    <div class="progress-bar"><div id="water-bar" class="progress-fill"></div></div>
+                </div>
+                <div class="progress-item">
+                    <label>Steps: <span id="steps-progress">0/10000</span></label>
+                    <div class="progress-bar"><div id="steps-bar" class="progress-fill"></div></div>
+                </div>
+            </div>
+
+            <!-- Nutrition Details -->
+            <div class="nutrition-details-card card">
+                <h3>📈 Nutrition Details</h3>
+                <div class="nutrition-grid">
+                    <div class="nutrient-card energy-card">
+                        <div class="nutrient-icon">⚡</div>
+                        <div class="nutrient-value" id="energy-val">0 kcal</div>
+                        <div class="nutrient-label">Energy</div>
+                    </div>
+                    <div class="nutrient-card protein-card">
+                        <div class="nutrient-icon">💪</div>
+                        <div class="nutrient-value" id="protein-val">0 g</div>
+                        <div class="nutrient-label">Protein</div>
+                    </div>
+                    <div class="nutrient-card carbs-card">
+                        <div class="nutrient-icon">🍠</div>
+                        <div class="nutrient-value" id="carbs-val">0 g</div>
+                        <div class="nutrient-label">Carbs</div>
+                    </div>
+                    <div class="nutrient-card fat-card">
+                        <div class="nutrient-icon">🥑</div>
+                        <div class="nutrient-value" id="fat-val">0 g</div>
+                        <div class="nutrient-label">Fat</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="charts-card card">
+                <h3>📊 Charts</h3>
+                <canvas id="nutrition-chart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}

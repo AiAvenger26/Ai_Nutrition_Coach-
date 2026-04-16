@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Nutrition Coach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>AI Nutrition Coach</h1>
+            <div class="nav-right">
+                <a href="templates/login.html" class="btn">Login</a>
+                <a href="templates/register.html" class="btn btn-primary">Register</a>
+            </div>
+        </div>
+    </nav>
+    
+    <main class="main-content">
+        <div class="dashboard-container">
+            <!-- Full dashboard here for direct access -->
+            <div class="dashboard-header">
+                <h1>AI Nutrition Coach</h1>
+                <p>Personalized diet, tracking & AI advice</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <div class="profile-card card">
+                        <h3>👤 Profile</h3>
+                        <input type="number" id="age" placeholder="Age" value="25">
+                        <input type="number" id="height" placeholder="Height (cm)" value="175">
+                        <input type="number" id="weight" placeholder="Weight (kg)" value="70">
+                        <button onclick="saveProfile()" class="btn btn-blue">💾 Save Profile</button>
+                        <div id="bmi-display" class="bmi-result">BMI: 22.9 (Normal)</div>
+                    </div>
+
+                    <div class="food-log-card card">
+                        <h3>🍽️ Food Log</h3>
+                        <input type="file" id="food-image" accept="image/*">
+                        <input type="text" id="food-input" placeholder="Food name">
+                        <button onclick="addFood()" class="btn btn-green">➕ Add Food</button>
+                        <div id="food-log-list">
+                            <div class="log-entry">
+                                <span class="time">14:30</span>
+                                <span>Chicken Rice - 450 kcal | P: 35g</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-coach-card card">
+                        <h3>🤖 AI Coach</h3>
+                        <button onclick="getAdvice()" class="btn btn-purple">💬 Get Personalized Advice</button>
+                        <div id="ai-output" class="ai-output">Click for advice</div>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="right-column">
+                    <div class="tracking-card card">
+                        <h3>📊 Daily Tracking</h3>
+                        <input type="number" id="water" placeholder="Water (ml)" value="1500">
+                        <input type="number" id="steps" placeholder="Steps" value="5000">
+                        <button onclick="updateTracking()" class="btn btn-purple">🔄 Update</button>
+                        <div class="progress-item">
+                            <label>Water: <span id="water-progress">1500/3000 ml</span></label>
+                            <div class="progress-bar"><div id="water-bar" class="progress-fill" style="width: 50%;"></div></div>
+                        </div>
+                        <div class="progress-item">
+                            <label>Steps: <span id="steps-progress">5000/10000</span></label>
+                            <div class="progress-bar"><div id="steps-bar" class="progress-fill" style="width: 50%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="nutrition-details-card card">
+                        <h3>📈 Nutrition Details</h3>
+                        <div class="nutrition-grid">
+                            <div class="nutrient-card energy-card">
+                                <div class="nutrient-icon">⚡</div>
+                                <div class="nutrient-value" id="energy-val">1850 kcal</div>
+                                <div class="nutrient-label">Energy</div>
+                            </div>
+                            <div class="nutrient-card protein-card">
+                                <div class="nutrient-icon">💪</div>
+                                <div class="nutrient-value" id="protein-val">95 g</div>
+                                <div class="nutrient-label">Protein</div>
+                            </div>
+                            <div class="nutrient-card carbs-card">
+                                <div class="nutrient-icon">🍠</div>
+                                <div class="nutrient-value" id="carbs-val">220 g</div>
+                                <div class="nutrient-label">Carbs</div>
+                            </div>
+                            <div class="nutrient-card fat-card">
+                                <div class="nutrient-icon">🥑</div>
+                                <div class="nutrient-value" id="fat-val">65 g</div>
+                                <div class="nutrient-label">Fat</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="charts-card card">
+                        <h3>📊 Charts</h3>
+                        <canvas id="nutrition-chart" width="400" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="static/script-fixed.js"></script>
+</body>
+</html>
